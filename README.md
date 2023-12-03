@@ -19,19 +19,26 @@ Se dispone de información de venta de productos de la categoría Aguas Saboriza
 junio a noviembre de 2020. 
 
 * **productos.csv** este archivo contiene el listado de los productos de aguas saborizadas con sus respectivos codigos.
-* **ventas.csv** este archivo contiene el detalle de los productos vendidos en el ultimo semeste del año 2020, se tiene la informacion de la cantidad de productos vendidos , el codigo de los puntos de venta que los vendieron (PDV), etc.
+* **ventas.csv** este archivo contiene el detalle de los productos vendidos en el ultimo semeste del año 2020, se tiene la informacion de la cantidad de productos vendidos , el codigo de los ***puntos de venta que los vendieron (PDV)***, etc.
 
 Con estos datos elaboraremos un DataApp que consta de 4 secciones: header, kpi_indicators, ranking_products_in_more_pdv, monthly_sales_by_product.
 
 ![envio de leads drawio](https://github.com/edwinml148/Reto-Shimoku/blob/develop/img/Data%20App.jpg)
 
 ## Header
+Es la cabecera del Data App , su proposito es solo conocer el nombre de la empresa.
 
 ## kpi indicators
+Los kpi's estan dividido en dos partes, el primero corresponde a el ingreso total en lo que va del año, mientras que el resto de kpi's son el procentaje de este ingreso que corresponde por marca.
+
+Cabe resaltar que estos valores son calculados , es decir que si se actuliza los archivos csv con mas datos y se deploya estos valores cambian.
 
 ## Ranking products in more pdv
+Este seccion representa el ranking de los productos mas populares, es decir esta ordenado de mayor a menor segun la cantidad de PDV que lo han vendido expresado en porcentaje.
+
 
 ## Monthly sales by produc
+Se muestra el importe de las ventas totales por meses de un determinado producto
 
 
 
