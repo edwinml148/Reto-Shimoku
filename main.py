@@ -1,26 +1,40 @@
-# from os import getenv
-# import shimoku_api_python as Shimoku
-
-# access_token = getenv('SHIMOKU_TOKEN')
-# universe_id: str = getenv('UNIVERSE_ID')
-# workspace_id: str = getenv('WORKSPACE_ID')
-
-# # Client initialization with playground mode
-# s = Shimoku.Client(
-#     access_token=access_token,
-#     universe_id=universe_id,
-# )
-
-
+import argparse
 from os import getenv
-import shimoku_api_python as Shimoku
+from shimoku_api_python import Client
+#from dotenv import load_dotenv
 
-access_token = 'c5a33aee-4f96-4451-a2a2-28c193f1fd85'
-universe_id: str = '271b8e52-b6a0-474d-88d4-045aef93cc40'
-workspace_id: str = '214f2129-1303-4a93-8d13-5ee21158547f'
+from board import Board
 
-# Client initialization with playground mode
-s = Shimoku.Client(
-    access_token=access_token,
-    universe_id=universe_id,
-)
+
+def main():
+    """
+    Main function to initialize and plot the dashboard.
+
+    This script initializes a Shimoku client, deletes existing boards and menu paths,
+    and then creates and plots a new dashboard.
+    """
+    # Load environment variables
+    access_token = '7b1dbf01-08a7-4ab0-9162-a3df6968487b'
+    universe_id: str = 'dfc83c69-7770-42e9-a052-a60f95a1c44e'
+    workspace_id: str = 'f017979c-1cb5-438e-b83c-a09264b4d88a'
+
+    # Create the Shimoku client with necessary credentials
+    shimoku = Client(
+        access_token=access_token,
+        universe_id=universe_id,
+        verbosity="INFO"
+    )
+    shimoku.set_workspace(uuid=workspace_id)
+    #shimoku.set_workspace()
+
+    # Delete all existing boards and menu paths in the workspace
+    shimoku.workspaces.delete_all_workspace_menu_paths()
+    shimoku.workspaces.delete_all_workspace_boards()
+
+    # Instantiate and set up the dashboard
+    board = Board(shimoku)
+    board.plot()  # Plot the dashboard
+
+
+if __name__ == "__main__":
+    main()
